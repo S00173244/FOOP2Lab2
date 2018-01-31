@@ -49,7 +49,7 @@ namespace FOOP2Lab2
 
         private void btn_AddPlayer_Click(object sender, RoutedEventArgs e)
         {
-            if(tbox_Name.ToString()!= null )
+            if(tbox_Name.ToString()!= null && dp_DateOfBirth.SelectedDate!= null)
             {
                 DateTime dt = dp_DateOfBirth.SelectedDate.Value;
                 playerList.Add(new Player(tbox_Name.Text, dt));
@@ -65,7 +65,7 @@ namespace FOOP2Lab2
         {
             string json = JsonConvert.SerializeObject(playerList);
             Console.WriteLine(json);
-            FileStream fs = new FileStream("players.json", FileMode.Append);
+            FileStream fs = new FileStream("players.json", FileMode.Create);
             StreamWriter sw = new StreamWriter(fs);
             sw.Write(json);
 
@@ -79,7 +79,10 @@ namespace FOOP2Lab2
         {
             FileStream fs = new FileStream("players.json", FileMode.Open);
             StreamReader sr = new StreamReader(fs);
-            List<Player> pl = (List < Player > )JsonConvert.DeserializeObject(sr.ReadLine());
+            List<Player> pl = JsonConvert.DeserializeObject<List<Player>>(sr.ReadToEnd());
+
+            lbox_playerList.ItemsSource = "";
+            lbox_playerList.ItemsSource = pl;
 
             sr.Dispose();
             sr.Close();

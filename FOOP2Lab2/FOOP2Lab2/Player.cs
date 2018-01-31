@@ -53,33 +53,57 @@ namespace FOOP2Lab2
             }
         }
 
-        #endregion
-
-        public Player(string n, DateTime dob)
+        public string Category
         {
-            Name = n;
-            DateOfBirth = dob;
-            Age = ((new DateTime(2018, 8, 31) - DateOfBirth).Days)/365;
-            
-            Console.WriteLine(Age);
-            setCategory(Age);
+            get
+            {
+                return category;
+            }
+
+            set
+            {
+                category = value;
+            }
         }
 
-        private void setCategory(int age)
+        #endregion
+
+
+        //public Player()
+        //{
+
+        //}
+
+        public Player(string Name, DateTime DateOfBirth)
         {
-            if (age <= 10) category = "u10";
-            else if (age <= 12) category = "u12";
-            else if (age <= 14) category = "u14";
-            else if (age <= 16) category = "u16";
-            else if (age <= 18) category = "u18";
-            else category = "Senior";
+            this.Name = Name;
+            this.DateOfBirth = DateOfBirth;
+            Age = ((new DateTime(2018, 8, 31) - DateOfBirth).Days) / 365;
+            Category = setCategory(Age);
+            Console.WriteLine(Age);
+            
+        }
+
+        private string setCategory(int age)
+        {
+            if (age <= 10) return "u10";
+            else if (age <= 12) return "u12";
+            else if (age <= 14) return "u14";
+            else if (age <= 16) return "u16";
+            else if (age <= 18) return "u18";
+            else return "Senior";
+
         }
 
 
         public override string ToString()
         {
 
+
+
+
             string catText = "";
+
             if (category == "u10") catText = "UNDER 10";
             else if (category == "u12") catText = "UNDER 12";
             else if (category == "u14") catText = "UNDER 14";
