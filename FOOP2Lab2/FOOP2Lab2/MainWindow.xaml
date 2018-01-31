@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FOOP2Lab2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="600" Loaded="Window_Loaded">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="137*"/>
+            <ColumnDefinition Width="380*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Label x:Name="lbl_PlayerList" Content="Player List" HorizontalAlignment="Left" Height="27" Margin="30,37,0,0" VerticalAlignment="Top" Width="80"/>
+        <ListBox x:Name="lbox_playerList" HorizontalAlignment="Left" Height="188" Margin="30,69,0,0" VerticalAlignment="Top" Width="257" Grid.ColumnSpan="2"/>
+        <Button x:Name="btn_Load" Content="Load" HorizontalAlignment="Left" Margin="30,272,0,0" VerticalAlignment="Top" Width="75" Click="btn_Load_Click"/>
+        <Button x:Name="btn_Save" Content="Save" HorizontalAlignment="Left" Margin="115,272,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Click="btn_Save_Click"/>
+        <Label x:Name="lbl_AddNewPlayers" Content="Add New Players" HorizontalAlignment="Left" Margin="154,37,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label x:Name="lbl_Name" Content="Name" HorizontalAlignment="Left" Margin="164,81,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label x:Name="lbl_DateOfBirth" Content="Date of Birth" HorizontalAlignment="Left" Margin="164,112,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <TextBox x:Name="tbox_Name" HorizontalAlignment="Left" Height="23" Margin="290,81,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <DatePicker Name="dp_DateOfBirth" Grid.Column="1" HorizontalAlignment="Left" Margin="290,113,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btn_AddPlayer" Content="Add Player" Grid.Column="1" HorizontalAlignment="Left" Margin="317,192,0,0" VerticalAlignment="Top" Width="75" Click="btn_AddPlayer_Click"/>
+
     </Grid>
 </Window>
